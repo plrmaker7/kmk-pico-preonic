@@ -1,10 +1,9 @@
 #PREONICPI - Raspberry Pi PICO
 #Rpi pico keyboard keymap
 import board
-from kmk.keys import KC
 from kmk.kmk_keyboard import KMKKeyboard
-from kmk.consts import UnicodeMode
-from kmk.handlers.sequences import unicode_string_sequence, send_string
+from kmk.keys import KC
+from kmk.modules.layers import Layers
 from kmk.matrix import DiodeOrientation
 from kmk.hid import HIDModes
 
@@ -14,23 +13,11 @@ plr7kb.col_pins = (board.GP2, board.GP3, board.GP4, board.GP5, board.GP6, board.
 plr7kb.row_pins = (board.GP20, board.GP21, board.GP22, board.GP26, board.GP27)
 plr7kb.diode_orientation = DiodeOrientation.COLUMNS
 plr7kb.debug_enabled = False
+layers_ext = Layers()
 nokey = KC.NO
-LOWER = KC.MO(1)
-RAISE = KC.MO(1)
 
-plr7kb.unicode_mode = UnicodeMode.LINUX
-plr7kb.tap_time = 350
+plr7kb.modules = [layers_ext]
 plr7kb.debug_enabled = False
-
-AFLIP  = unicode_string_sequence('(ノಠ痊ಠ)ノ彡┻━┻')
-CHEER  = unicode_string_sequence('+｡:.ﾟヽ(´∀｡)ﾉﾟ.:｡+ﾟﾟ+｡:.ﾟヽ(*´∀)ﾉﾟ.:｡+ﾟ')    
-SHRUGGIE = unicode_string_sequence('¯\_(ツ)_/¯')
-TABLE_FLIP = unicode_string_sequence('(╯°□°）╯︵ ┻━┻')
-WAT  = unicode_string_sequence('⊙.☉')
-FF  = unicode_string_sequence('凸(ﾟДﾟ#)')
-F = unicode_string_sequence('（￣^￣）凸')
-MEH = unicode_string_sequence('╮(￣_￣)╭')
-YAY = unicode_string_sequence('o(^▽^)o')   
 
 
 plr7kb.keymap = [
@@ -40,17 +27,17 @@ plr7kb.keymap = [
     KC.GRAVE, KC.Q, KC.W, KC.E, KC.R, KC.T, KC.Y, KC.U, KC.I, KC.O, KC.P, KC.DEL, 
     KC.TAB, KC.A, KC.S, KC.D, KC.F, KC.G, KC.H, KC.J, KC.K, KC.L, KC.SCLN, KC.QUOT, 
     KC.LSFT, KC.Z, KC.X, KC.C, KC.V, KC.B, KC.N, KC.M, KC.COMM, KC.DOT, KC.SLSH, KC.ENT, 
-    KC.LCTL, KC.LGUI, KC.LALT, KC.RALT, LOWER, KC.SPC, KC.SPC, RAISE, KC.LEFT, KC.DOWN, KC.UP, KC.RIGHT, 
+    KC.LCTL, KC.LGUI, KC.LALT, KC.RALT, KC.MO(1), KC.SPC, KC.SPC, KC.MO(1), KC.LEFT, KC.DOWN, KC.UP, KC.RIGHT, 
     ],
     
     [
     #Layer 1
     
-    nokey, KC.F1, KC.F2, KC.F3, KC.F4, nokey, KC.F5, KC.F6, KC.F7, KC.F8, KC.F9, KC.F10,  nokey,
+    nokey, KC.F1, KC.F2, KC.F3, KC.F4, KC.F5, KC.F6, KC.F7, KC.F8, KC.F9, KC.F10, nokey,
     KC.CAPS, KC.F11,  KC.F12,  nokey, nokey, nokey, nokey, KC.MINUS, KC.EQUAL,  KC.LBRC, KC.RBRC, KC.BSLS,
     nokey, KC.VOLD, KC.MUTE, KC.VOLU, nokey, nokey, nokey, KC.UNDS, KC.PLUS, KC.LCBR, KC.RCBR, KC.PIPE,
     nokey, KC.MPRV, KC.MPLY, KC.MNXT, nokey, nokey, nokey, nokey, nokey, nokey, nokey, nokey,
-    nokey, nokey, nokey, nokey, nokey, nokey, nokey, nokey, KC.HOME, KC.PGDN, KC.PGUP, KC.END,
+    nokey, nokey, nokey, nokey, KC.TRNS, nokey, nokey, KC.TRNS, KC.HOME, KC.PGDN, KC.PGUP, KC.END,
     ],
 ]
 
