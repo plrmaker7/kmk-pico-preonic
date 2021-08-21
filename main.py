@@ -31,8 +31,7 @@ plr7kb.keymap = [
     ],
     
     [
-    #Layer 1
-    
+    #Layer 1  
     nokey, KC.F1, KC.F2, KC.F3, KC.F4, KC.F5, KC.F6, KC.F7, KC.F8, KC.F9, KC.F10, nokey,
     KC.CAPS, KC.F11,  KC.F12,  nokey, nokey, nokey, nokey, KC.MINUS, KC.EQUAL,  KC.LBRC, KC.RBRC, KC.BSLS,
     nokey, KC.VOLD, KC.MUTE, KC.VOLU, nokey, nokey, nokey, KC.UNDS, KC.PLUS, KC.LCBR, KC.RCBR, KC.PIPE,
